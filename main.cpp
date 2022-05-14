@@ -29,7 +29,45 @@ void InputKey()
         }
     }
 }
-
+void minigame1()
+{
+    FILE *f;
+    FILE *fd;
+    fd=fopen("Dapan.txt","r");
+    int *a;
+    a=(int*)malloc(7*sizeof(int));
+    for(int i=0;i<7;i++)
+    {
+        fscanf(fd,"%d",&a[i]);
+    }
+    f=fopen("Cauhoi.txt","r");
+    char s[7][20];
+    StartConversation("Resources/nam.jpg","Resources/day2-4.1.jpg","","Hãy vượt qua thử thách để đuổi lũ côn trùng đi!!!");
+        int i;
+        int n;
+        printf("                 Tinh nhanh\n");
+        for (int i=0; i<7; i++)
+			{
+			    fscanf(f, "%s", s+i);
+			}
+        for(int i=0;i<7;i++)
+        {
+            printf("Cau hoi %d: %s\n",i+1,(s+i));
+            printf("Dap an dung la:");
+            scanf("%d",&n);
+            if(n==a[i])
+            {
+                printf("Ban da dung!!!\n");
+            }
+            else{
+                printf("Dap an cua ban da sai, hay tinh lai.\n");
+                i--;
+            }
+        }
+        fclose(f);
+        fclose(fd);
+        free(a);
+}
 void Introduce()
 {
     SaveGame("GameData.txt",0);
